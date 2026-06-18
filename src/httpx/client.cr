@@ -26,7 +26,11 @@ module HTTPX::Internal
     end
 
     def is_connected? : Bool
-      @http.closed? == false
+      !@http.closed?
+    end
+
+    def host : String
+      @host
     end
   end
 end
