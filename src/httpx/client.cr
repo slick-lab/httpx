@@ -1,6 +1,6 @@
 # does the actual request sending using the crystal http/client stdlib 
 require "http/client"
-module Httpx::Internal
+module HTTPX::Internal
   class Client
     @http : HTTP::Client?
     @host : String
@@ -17,8 +17,8 @@ module Httpx::Internal
       @http.exec(request)
       rescue ex : IO::TimeoutError
        raise HTTPX::TimeoutError.new("Request Timed Out")
-     rescue ex : OpenSSL::SSL::Error
-      raise HTTPX::SSLError.new("SSL handshake failed #{ex.message}")
+      rescue ex : OpenSSL::SSL::Error
+       raise HTTPX::SSLError.new("SSL handshake failed #{ex.message}")
     end
 
     def close : Nil
